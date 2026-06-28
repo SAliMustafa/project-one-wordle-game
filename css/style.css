@@ -1,0 +1,27 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+#board {
+    height: 350px;
+    width: 320px;
+    /* background-color: blue ; */
+    display: flex;    
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tile {
+    border: solid 2px black;
+    height: 55px;
+    width: 55px;
+    margin: 2.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
