@@ -3,6 +3,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -29,4 +30,20 @@ body{
 
 .tile {
     font-size: 40px;
+}
+
+.correct{ 
+    background-color: #6AAA64;
+    color: #FFFFFF;
+    border-color: #6AAA64;
+}
+.includes{
+    background-color: #C9B458;
+    color: #FFFFFF;
+    border-color: #C9B458;
+}
+.absent{
+    background-color: #787C7E;
+    color: #FFFFFF; 
+    border-color:#787C7E;
 }
