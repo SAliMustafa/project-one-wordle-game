@@ -8,8 +8,8 @@ body{
 
 
 #board {
-    height: 350px;
-    width: 320px;
+    height: 270px;
+    width: 240px;
     /* background-color: blue ; */
     display: flex;    
     align-items: center;
@@ -19,8 +19,8 @@ body{
 
 .tile {
     border: solid 2px black;
-    height: 55px;
-    width: 55px;
+    height: 30px;
+    width: 30px;
     margin: 2.5px;
     /* display: flex;
     justify-content: center;
