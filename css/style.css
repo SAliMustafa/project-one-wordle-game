@@ -21,7 +21,12 @@ body{
     height: 55px;
     width: 55px;
     margin: 2.5px;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+    text-align: center;
+}
+
+.tile {
+    font-size: 40px;
 }
