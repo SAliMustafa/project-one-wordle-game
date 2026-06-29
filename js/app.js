@@ -5,8 +5,24 @@ let gameOver = false;
 const wordLength = 5;
 const numOfTries = 6;
 let guess = '';
-const correctWord = words[Math.floor(Math.random() * words.length)] 
+let correctWord = words[Math.floor(Math.random() * words.length)] 
 const ans = document.querySelector('#answer')
+const reset = document.querySelector('#play-again')
+
+function playAgain(){
+    for (let i = 0; i<numOfTries; i++){
+        for (let r = 0; r<wordLength; r++){
+            let currentTile = document.getElementById(`${i}-${r}`)
+            currentTile.innerHTML = '';
+            currentTile.classList.remove('correct','includes','absent');
+        }
+    }
+    correctWord = words[Math.floor(Math.random() * words.length)]
+    gameOver = false;
+    currentLetter = 0;
+    currentWord = 0;
+    guess = '';
+}
 
 function addLetter(e) {
     if (gameOver){return}
@@ -30,10 +46,7 @@ function addLetter(e) {
         }
     }
     if (currentLetter > 0 && e.key === 'Backspace') {
-        currentLetter--
-        let currentTile = document.getElementById(`${currentWord}-${currentLetter}`)
-        currentTile.innerHTML = ''
-        guess = guess.slice(0, -1);
+        deleteLetters();
         return
     }
     if (e.code.startsWith('Key') && currentLetter < 5) {
@@ -71,4 +84,11 @@ function gameOverF() {
         ans.innerHTML = correctWord;
     }
 }
+function deleteLetters(){
+        currentLetter--
+        let currentTile = document.getElementById(`${currentWord}-${currentLetter}`)
+        currentTile.innerHTML = ''
+        guess = guess.slice(0, -1);
+}
 addEventListener('keyup', addLetter);
+reset.addEventListener('click', playAgain)

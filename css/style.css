@@ -19,17 +19,17 @@ body{
 
 .tile {
     border: solid 2px black;
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
     margin: 2.5px;
-    /* display: flex;
+    display: flex;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
     text-align: center;
 }
 
 .tile {
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .correct{ 
