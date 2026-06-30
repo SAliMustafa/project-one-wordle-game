@@ -25,26 +25,7 @@ const startGameBtn = document.querySelector('#start-btn')
 const page = document.querySelector('#welcome-page')
 const gameContainer = document.querySelector('#game')
 const msg = document.querySelector('#message')
-
-// function darkMode(){
-//     main.style.backgroundColor = 'black';
-//     const title0 = document.querySelector('#title')
-//     title0.style.color = 'grey';
-//     const squares = document.querySelectorAll('.tile')
-//     for (let i = 0; i<numOfTries; i++){
-//         for (let r = 0; r<wordLength; r++){
-//             let currentTile = document.getElementById(`${i}-${r}`)
-//             currentTile.style.backgroundColor = 'grey';
-//         }
-//     }
-//     ans.style.color = 'white';
-//     darkModeBtn.style.backgroundColor = 'grey';
-//     darkModeBtn.style.color = 'white';
-//     darkModeBtn.style.border = 'solid dark grey';
-//     reset.style.backgroundColor = 'grey';
-//     reset.style.color = 'white';
-//     reset.style.border = 'none';
-// }
+const closingMsg = document.querySelector('#closing-message')
 
 function startGame(){
     page.classList.add('hidden')
@@ -86,6 +67,7 @@ function playAgain(){
     currentWord = 0;
     guess = '';
     ans.innerHTML = '';
+    msg.innerHTML = ''
 }
 
 function addLetter(e) {
@@ -98,9 +80,7 @@ function addLetter(e) {
         gameOverF()
         if (guess == correctWord) {
             gameOver = true
-            // ans.innerHTML = word
-            console.log("You Won!")
-            message.innerHTML = 'You lost, why not try again?'
+            winMessage()
 
         }
         else {
@@ -121,16 +101,12 @@ function addLetter(e) {
             currentTile.innerHTML = w
             currentLetter++
             guess = guess + w
-            // guess.push(w)
             console.log(guess)
             return
         }
     }
 }
 
-// function countLetters(){
-    
-// }
 function checkWord() {
     for (let i = 0; i < wordLength; i++) {
         let currentTile = document.getElementById(`${currentWord}-${i}`)
@@ -149,8 +125,7 @@ function gameOverF() {
     console.log('currentWord', currentWord)
     if (currentWord === 5) {
         gameOver = true;
-        ans.innerHTML = correctWord;
-        message.innerHTML = 'You lost, why not try again?'
+        lossMessage()
     }
 }
 
@@ -161,7 +136,15 @@ function deleteLetters(){
         guess = guess.slice(0, -1);
 }
 
+function winMessage(){
+    msg.innerHTML = '🎉 Brilliant! You won!'
+    closingMsg.classList.remove('hidden')
+}
 
+function lossMessage(){
+    msg.innerHTML = `💥 Game Over! The word was ${correctWord}`
+    closingMsg.classList.remove('hidden')
+}
 
 addEventListener('keyup', addLetter);
 reset.addEventListener('click', playAgain)
