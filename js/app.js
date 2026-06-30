@@ -1,4 +1,13 @@
-const words = ['SLIDE', 'BREAK', 'SAYED', 'FAITH', 'AGREE', 'AMUSE', 'ANGLE', 'FAVOR', 'GRACE', 'HEART', 'LEARN', 'MERCY', 'POWER', 'PRIME', 'PEACE', 'VALUE']
+const words = ["ABOUT", "ABOVE", "ADULT", "AFTER", "AGENT", "BASIC", "BEACH", "BEGIN", "BLACK", "BLIND",
+  "CABLE", "CAMEL", "CHAIN", "CHAIR", "CLEAR", "DANCE", "DEATH", "DELAY", "DEPTH", "EARLY",
+  "EARTH", "EIGHT", "EMPTY", "FAITH", "FIELD", "FIRST", "FOCUS", "GIANT", "GLASS", "GLOVE",
+  "GRACE", "HABIT", "HEART", "HEAVY", "HOUSE", "IDEAL", "IMAGE", "IMPLY", "INDEX", "JOINT",
+  "JUDGE", "JUICE", "JUMBO", "KNIFE", "KNOCK", "KNOWN", "KOALA", "LABOR", "LAUGH", "LEMON",
+  "LIGHT", "MAGIC", "MAJOR", "MATCH", "METAL", "NEVER", "NIGHT", "NOISE", "NORTH", "OCEAN",
+  "OFFER", "OFTEN", "ORDER", "PAPER", "PEACE", "PHONE", "PILOT", "QUEEN", "QUICK", "QUIET",
+  "QUOTE", "RADIO", "RAISE", "REACH", "RELAX", "SCALE", "SHARE", "SHIRT", "SMART", "TABLE",
+  "TASTE", "THEME", "THING", "UNCLE", "UNDER", "UNION", "UNTIL", "VALID", "VALUE", "VIDEO",
+  "VOICE", "WASTE", "WATCH", "WATER", "WORLD", "YACHT", "YOUNG", "YOUTH", "ZEBRA", "ZONES"]
 let currentWord = 0;
 let currentLetter = 0;
 let gameOver = false;
@@ -8,11 +17,10 @@ let guess = '';
 let correctWord = words[Math.floor(Math.random() * words.length)] 
 const ans = document.querySelector('#answer')
 const reset = document.querySelector('#play-again')
-let letterCount = {};
+// let letterCount = {};
 const darkModeBtn = document.querySelector('#dark-mode')
 const main = document.querySelector('body')
 const squares = document.querySelectorAll('.tile')
-
 
 // function darkMode(){
 //     main.style.backgroundColor = 'black';
@@ -34,18 +42,25 @@ const squares = document.querySelectorAll('.tile')
 //     reset.style.border = 'none';
 // }
 
+
 function darkMode(){
-    main.classList.add("dark-mode-class")
-    darkModeBtn.classList.add("dark-mode-btns")
-    reset.classList.add("dark-mode-btns")
+    main.classList.toggle("dark-mode-class")
+    darkModeBtn.classList.toggle("dark-mode-btns")
+    reset.classList.toggle("dark-mode-btns")
     // squares.classList.add("dark-mode-tile")
     for (let i = 0; i<numOfTries; i++){
          for (let r = 0; r<wordLength; r++){
             let currentTile = document.getElementById(`${i}-${r}`)
-            currentTile.classList.add("dark-mode-tile")
+            currentTile.classList.toggle("dark-mode-tile")
          }
     }
+    if (main.classList.contains("dark-mode-class")){
+        darkModeBtn.innerHTML = 'Light Mode'
+    } else {
+        darkModeBtn.innerHTML = "Dark Mode"
+    }
 }
+
 darkModeBtn.addEventListener('click', darkMode)
 
 function playAgain(){
@@ -102,11 +117,9 @@ function addLetter(e) {
     }
 }
 
-function countLetters(){
+// function countLetters(){
     
-}
-
-
+// }
 function checkWord() {
     for (let i = 0; i < wordLength; i++) {
         let currentTile = document.getElementById(`${currentWord}-${i}`)
