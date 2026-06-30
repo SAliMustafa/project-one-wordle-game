@@ -21,6 +21,10 @@ const reset = document.querySelector('#play-again')
 const darkModeBtn = document.querySelector('#dark-mode')
 const main = document.querySelector('body')
 const squares = document.querySelectorAll('.tile')
+const startGameBtn = document.querySelector('#start-btn')
+const page = document.querySelector('#welcome-page')
+const gameContainer = document.querySelector('#game')
+const msg = document.querySelector('#message')
 
 // function darkMode(){
 //     main.style.backgroundColor = 'black';
@@ -42,6 +46,11 @@ const squares = document.querySelectorAll('.tile')
 //     reset.style.border = 'none';
 // }
 
+function startGame(){
+    page.classList.add('hidden')
+    gameContainer.classList.remove('hidden')
+
+}
 
 function darkMode(){
     main.classList.toggle("dark-mode-class")
@@ -91,6 +100,8 @@ function addLetter(e) {
             gameOver = true
             // ans.innerHTML = word
             console.log("You Won!")
+            message.innerHTML = 'You lost, why not try again?'
+
         }
         else {
             console.log("IN IF")
@@ -139,6 +150,7 @@ function gameOverF() {
     if (currentWord === 5) {
         gameOver = true;
         ans.innerHTML = correctWord;
+        message.innerHTML = 'You lost, why not try again?'
     }
 }
 
@@ -153,3 +165,4 @@ function deleteLetters(){
 
 addEventListener('keyup', addLetter);
 reset.addEventListener('click', playAgain)
+startGameBtn.addEventListener('click', startGame)

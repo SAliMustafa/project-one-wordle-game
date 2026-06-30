@@ -8,10 +8,18 @@
     <script defer src="./js/app.js"></script>
 </head>
 <body>
+    <section id="welcome-page">
+        <h1>Welcome to Wordle <span id="fancy">by Sayed</span></h1>
+        <p>Guess the secret 5-letter word in 6 tries. <br>Colors will hint how close you are!</p>
+        <button id="start-btn" class="btn">Start Game</button>
+    </section>
+
+    <section id="game" class="hidden">
     <h1 id="title">Wordle</h1>
     <button id='dark-mode' class='btn'>Dark Mode</button>
     <br>
     <span id="answer"></span>
+    <span id="message"></span>
     <br>
     <section id="board">
         <span id="0-0" class="tile"></span>
@@ -48,5 +56,6 @@
     <br>
     <br>
     <button id="play-again" class='btn'>Play Again!</button>
+    </section>
 </body>
 </html>
