@@ -8,6 +8,45 @@ let guess = '';
 let correctWord = words[Math.floor(Math.random() * words.length)] 
 const ans = document.querySelector('#answer')
 const reset = document.querySelector('#play-again')
+let letterCount = {};
+const darkModeBtn = document.querySelector('#dark-mode')
+const main = document.querySelector('body')
+const squares = document.querySelectorAll('.tile')
+
+
+// function darkMode(){
+//     main.style.backgroundColor = 'black';
+//     const title0 = document.querySelector('#title')
+//     title0.style.color = 'grey';
+//     const squares = document.querySelectorAll('.tile')
+//     for (let i = 0; i<numOfTries; i++){
+//         for (let r = 0; r<wordLength; r++){
+//             let currentTile = document.getElementById(`${i}-${r}`)
+//             currentTile.style.backgroundColor = 'grey';
+//         }
+//     }
+//     ans.style.color = 'white';
+//     darkModeBtn.style.backgroundColor = 'grey';
+//     darkModeBtn.style.color = 'white';
+//     darkModeBtn.style.border = 'solid dark grey';
+//     reset.style.backgroundColor = 'grey';
+//     reset.style.color = 'white';
+//     reset.style.border = 'none';
+// }
+
+function darkMode(){
+    main.classList.add("dark-mode-class")
+    darkModeBtn.classList.add("dark-mode-btns")
+    reset.classList.add("dark-mode-btns")
+    // squares.classList.add("dark-mode-tile")
+    for (let i = 0; i<numOfTries; i++){
+         for (let r = 0; r<wordLength; r++){
+            let currentTile = document.getElementById(`${i}-${r}`)
+            currentTile.classList.add("dark-mode-tile")
+         }
+    }
+}
+darkModeBtn.addEventListener('click', darkMode)
 
 function playAgain(){
     for (let i = 0; i<numOfTries; i++){
@@ -22,6 +61,7 @@ function playAgain(){
     currentLetter = 0;
     currentWord = 0;
     guess = '';
+    ans.innerHTML = '';
 }
 
 function addLetter(e) {
@@ -62,6 +102,11 @@ function addLetter(e) {
     }
 }
 
+function countLetters(){
+    
+}
+
+
 function checkWord() {
     for (let i = 0; i < wordLength; i++) {
         let currentTile = document.getElementById(`${currentWord}-${i}`)
@@ -73,7 +118,6 @@ function checkWord() {
         } else {
             currentTile.classList.add("absent")
         }
-
     }
 }
 
@@ -84,11 +128,15 @@ function gameOverF() {
         ans.innerHTML = correctWord;
     }
 }
+
 function deleteLetters(){
         currentLetter--
         let currentTile = document.getElementById(`${currentWord}-${currentLetter}`)
         currentTile.innerHTML = ''
         guess = guess.slice(0, -1);
 }
+
+
+
 addEventListener('keyup', addLetter);
 reset.addEventListener('click', playAgain)

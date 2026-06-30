@@ -32,6 +32,24 @@ body{
     font-size: 30px;
 }
 
+#dark-mode{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.dark-mode-class{
+    background-color: black;
+    color: white;
+}
+.dark-mode-btns{
+    background-color: lightgray;
+    border: solid 2px darkgray;
+}
+.dark-mode-tile{
+    background-color: lightgray;
+    border: solid 2px darkgray;
+    color: black;   
+}
 .correct{ 
     background-color: #6AAA64;
     color: #FFFFFF;
@@ -46,4 +64,10 @@ body{
     background-color: #787C7E;
     color: #FFFFFF; 
     border-color:#787C7E;
+}
+#play-again{
+    border-radius: 5%;
+}
+#dark-mode{
+    border-radius: 5%;
 }
