@@ -25,6 +25,9 @@ const page = document.querySelector('#welcome-page')
 const gameContainer = document.querySelector('#game')
 const msg = document.querySelector('#message')
 const closingMsg = document.querySelector('#closing-message')
+const deletKbBtn = document.querySelector('#delete')
+const enterKbBtn = document.querySelector('#enter')
+const lettersKbBtn = document.querySelector('.key')
 
 function startGame() {
     page.classList.add('hidden')
@@ -50,7 +53,6 @@ function darkMode() {
     document.activeElement.blur();
 }
 
-darkModeBtn.addEventListener('click', darkMode)
 
 function playAgain() {
     for (let i = 0; i < numOfTries; i++) {
@@ -74,22 +76,22 @@ function addLetter(e) {
     if (gameOver) { return }
     let currentTile = document.getElementById(`${currentWord}-${currentLetter}`)
     let w = e.key.toUpperCase();
-    if (currentLetter == 5 && e.key == 'Enter') {
-        checkWord()
-        gameOverF()
-        if (guess == correctWord) {
-            gameOver = true
-            winMessage()
-
-        }
-        else {
-            currentWord++;
-            currentLetter = 0;
-            guess = '';
-            return
-        }
+    if (e.key == 'Enter') {
+        // checkWord()
+        // gameOverF()
+        enterGuess()
+        // if (guess == correctWord) {
+        //     gameOver = true
+        //     winMessage()
+        // }
+        // else {
+        //     currentWord++;
+        //     currentLetter = 0;
+        //     guess = '';
+        //     return
+        // }
     }
-    if (currentLetter > 0 && e.key === 'Backspace') {
+    if(e.key === 'Backspace') {
         deleteLetters();
         return
     }
@@ -104,28 +106,11 @@ function addLetter(e) {
 }
 
 function checkWord() {
-    // for (let i = 0; i < wordLength; i++) {
-    // let currentTile = document.getElementById(`${currentWord}-${i}`)
-    //     let guessedLetter = guess[i];
-    //     if (guessedLetter === correctWord[i]) {
-    //         currentTile.classList.add("correct")
-    //     } else if (correctWord.includes(guessedLetter)) {
-    //         currentTile.classList.add("includes")
-    //     } else {
-    //         currentTile.classList.add("absent")
-    //     }
-    // }
     const letterValidation = {}
     for (let i = 0; i < wordLength; i++) {
         let letter = correctWord[i];
-        // if (letterValidation[letter] === 'undefined') {
-        //     letterValidation[letter] = 1
-        // } else {
-        //     letterValidation[letter]++
-        // }
         letterValidation[letter] = (letterValidation[letter] || 0) + 1
-            console.log(letterValidation)
-    }
+        }
     let tileStatus = ['','','','','']
     for (let i = 0; i < wordLength; i++) {
         let guessedLetter = guess[i];
@@ -148,10 +133,28 @@ function checkWord() {
     for (let i = 0; i < wordLength; i++) {
         let currentTile = document.getElementById(`${currentWord}-${i}`)
         currentTile.classList.add(tileStatus[i])
-        console.log(tileStatus[i])
-
     }
 }
+
+function enterGuess(){
+    let currentTile = document.getElementById(`${currentWord}-${currentLetter}`)
+    if (currentLetter == 5){    
+        checkWord()
+        gameOverF()
+        if (guess == correctWord) {
+            gameOver = true
+            winMessage()
+        }
+        else {
+            currentWord++;
+            currentLetter = 0;
+            guess = '';
+            return
+        }
+    }
+    document.activeElement.blur()
+}
+
 function gameOverF() {
     if (currentWord === 5) {
         gameOver = true;
@@ -160,10 +163,13 @@ function gameOverF() {
 }
 
 function deleteLetters() {
+    if (currentLetter > 0 ){
     currentLetter--
     let currentTile = document.getElementById(`${currentWord}-${currentLetter}`)
     currentTile.innerHTML = ''
     guess = guess.slice(0, -1);
+    }
+    document.activeElement.blur();
 }
 
 function winMessage() {
@@ -176,6 +182,14 @@ function lossMessage() {
     closingMsg.classList.remove('hidden')
 }
 
+function addLetterScreen(){
+    
+}
+
 addEventListener('keyup', addLetter);
 reset.addEventListener('click', playAgain)
 startGameBtn.addEventListener('click', startGame)
+darkModeBtn.addEventListener('click', darkMode)
+deletKbBtn.addEventListener('click', deleteLetters)
+enterKbBtn.addEventListener('click', enterGuess)
+lettersKbBtn.addEventListener('click', addLetter)

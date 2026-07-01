@@ -48,6 +48,7 @@
 .tile {
     font-size: 20px;
     font-weight: bold;
+    transition: all 0.5s ease-in-out;
 }
 
 .btn{
@@ -60,7 +61,28 @@
     padding: 5px 10px;
     background-color: white;
 }
-
+.row{
+    display:flex;
+    width: 100%;
+    margin:auto 8px;
+    justify-content: center;
+    align-items: center;
+}
+.key{
+    margin: 3px;
+    background-color: #ffffff;
+    border: solid 1px black
+}
+#enter{
+    margin: 3px;
+    background-color: #ffffff;
+    border: solid 1px black
+}
+#delete{
+    margin: 3px;
+    background-color: #ffffff;
+    border: solid 1px black   
+}
 #dark-mode{
     position: absolute;
     top: 10px;
