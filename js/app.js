@@ -27,7 +27,7 @@ const msg = document.querySelector('#message')
 const closingMsg = document.querySelector('#closing-message')
 const deletKbBtn = document.querySelector('#delete')
 const enterKbBtn = document.querySelector('#enter')
-const lettersKbBtn = document.querySelector('.key')
+const lettersKbBtn = document.querySelectorAll('.key')
 
 function startGame() {
     page.classList.add('hidden')
@@ -134,6 +134,7 @@ function checkWord() {
         let currentTile = document.getElementById(`${currentWord}-${i}`)
         currentTile.classList.add(tileStatus[i])
     }
+
 }
 
 function enterGuess(){
@@ -182,8 +183,11 @@ function lossMessage() {
     closingMsg.classList.remove('hidden')
 }
 
-function addLetterScreen(){
-    
+function addLetterScreen(event){
+    let currentTile = document.getElementById(`${currentWord}-${currentLetter}`)
+    currentTile.innerHTML = event.target.innerHTML;
+    currentLetter++
+    return
 }
 
 addEventListener('keyup', addLetter);
@@ -192,4 +196,7 @@ startGameBtn.addEventListener('click', startGame)
 darkModeBtn.addEventListener('click', darkMode)
 deletKbBtn.addEventListener('click', deleteLetters)
 enterKbBtn.addEventListener('click', enterGuess)
-lettersKbBtn.addEventListener('click', addLetter)
+
+for (let r of lettersKbBtn){
+r.addEventListener('click', addLetterScreen)
+}

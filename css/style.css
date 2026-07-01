@@ -70,18 +70,21 @@
 }
 .key{
     margin: 3px;
-    background-color: #ffffff;
-    border: solid 1px black
+    background-color: #D3D6DA;
+    border: none;
+    border-radius: 4px;
 }
 #enter{
     margin: 3px;
-    background-color: #ffffff;
-    border: solid 1px black
+    background-color: #D3D6DA;
+    border: none;
+    border-radius: 4px;
 }
 #delete{
     margin: 3px;
-    background-color: #ffffff;
-    border: solid 1px black   
+    background-color: #D3D6DA;
+    border-radius: 4px;
+    border: none;
 }
 #dark-mode{
     position: absolute;
