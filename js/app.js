@@ -77,19 +77,7 @@ function addLetter(e) {
     let currentTile = document.getElementById(`${currentWord}-${currentLetter}`)
     let w = e.key.toUpperCase();
     if (e.key == 'Enter') {
-        // checkWord()
-        // gameOverF()
         enterGuess()
-        // if (guess == correctWord) {
-        //     gameOver = true
-        //     winMessage()
-        // }
-        // else {
-        //     currentWord++;
-        //     currentLetter = 0;
-        //     guess = '';
-        //     return
-        // }
     }
     if(e.key === 'Backspace') {
         deleteLetters();
@@ -186,7 +174,9 @@ function lossMessage() {
 function addLetterScreen(event){
     let currentTile = document.getElementById(`${currentWord}-${currentLetter}`)
     if(currentLetter < wordLength){
-    currentTile.innerHTML = event.target.innerHTML;
+    let letter = event.target.innerHTML;
+    currentTile.innerHTML = letter;
+    guess = guess + letter;
     currentLetter++
     return
     }
