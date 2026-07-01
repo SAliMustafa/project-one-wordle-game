@@ -185,9 +185,11 @@ function lossMessage() {
 
 function addLetterScreen(event){
     let currentTile = document.getElementById(`${currentWord}-${currentLetter}`)
+    if(currentLetter < wordLength){
     currentTile.innerHTML = event.target.innerHTML;
     currentLetter++
     return
+    }
 }
 
 addEventListener('keyup', addLetter);
