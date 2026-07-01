@@ -28,7 +28,6 @@
 #board {
     height: 210px;
     width: 200px;
-    /* background-color: blue ; */
     display: flex;    
     align-items: center;
     justify-content: center;
